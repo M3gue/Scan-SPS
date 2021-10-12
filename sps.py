@@ -3,7 +3,7 @@ from time import sleep
 from PIL import Image
 
 def Rename_func():    
-    path = input("Ingrese la ubicación de la carpeta: ")
+    path = input("\nIngrese la ubicación de la carpeta para borrar COPIA: ")
     path = path.replace("\\","/") # Cambiamos los backslashes a slashes
 
     list_name = os.listdir(path) # Lista de todos los archivos del path
@@ -42,7 +42,7 @@ def Rename_func():
     print("\n*** Proceso terminado ***")
 
 def Quitar_cero_func():
-    path = input("Ingrese la ubicación de la carpeta: ")
+    path = input("\nIngrese la ubicación de la carpeta para eliminar CERO: ")
     path = path.replace("\\","/") # Cambiamos los backslashes a slashes
 
     list_name = os.listdir(path) # Lista de todos los archivos donde se encuentra nuestro script
@@ -66,7 +66,7 @@ def Quitar_cero_func():
     print("\n*** Proceso terminado ***")
     
 def Convert_func():
-    path = input("Ingrese la ubicación de la carpeta: ")
+    path = input("\nIngrese la ubicación de la carpeta para CONVERTIR archivos: ")
     path = path.replace("\\","/") # Cambiamos los backslashes a slashes
 
     list_name = os.listdir(path) # Lista de todos los archivos del path
@@ -91,8 +91,8 @@ def Convert_func():
   
     print("\n*** Proceso terminado ***")
     
-    
-x = input("Seleccione una opción:\n 1. Quitar copia. \n 2. Quitar cero. \n 3. Reconvertir archivos.\n")
+  
+x = input("Seleccione una opción:\n 1. Quitar COPIA. \n 2. Quitar CERO. \n 3. Reconvertir archivos.\n")
 
 if x == "1":
     Rename_func()
@@ -105,3 +105,5 @@ elif x == "3":
     
 else:
     print("Error, numero ingresado no válido")
+    
+input("\nPresione ENTER para continuar")
