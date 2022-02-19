@@ -41,6 +41,42 @@ def Rename_func():
 
     print("\n*** Proceso terminado ***")
 
+def Rename_func_perso():    
+    path = input("\nIngrese la ubicación de la carpeta para borrar MODIFICAR: ")
+    path = path.replace("\\","/") # Cambiamos los backslashes a slashes
+
+    list_name = os.listdir(path) # Lista de todos los archivos del path
+    # list_name.remove("Rename.py") # Eliminamos el nombre del script para que no pase nada malo
+
+    new_list = [] # Almacenaremos la lista de los archivos
+    new_list_updated = [] # Almacenaremos la lista de los archivos con los nombres cambiados
+
+    old_name = input("Ingrese las palabras que desea reemplazar:") # Nombre que va a buscar para reemplazar
+    new_name = input("Ingrese las palabras por las que se van a reemplazar:") # Nombre con el que lo va a reemplazar
+
+    print("\nCreando lista con los nombres a cambiar...")
+    for i in range(len(list_name)):
+        if old_name in list_name[i]:
+            new_list.append(list_name[i])
+            
+        sleep(0.02)
+
+    print("\nCreando lista con los nombres cambiados...")
+    new_list_updated = [name.replace(old_name, new_name) for name in new_list]
+
+    print(f"\nCambiando los nombres de {len(new_list)} archivos...")
+
+    total = len(new_list_updated)
+    for i in range(len(new_list)):
+        os.rename(path+"/"+new_list[i], path+"/"+new_list_updated[i]) # Renombramos el archivo en el path
+        
+        total -= 1
+        print(f"{total} archivos restantes...")
+        
+        sleep(0.02)
+
+    print("\n*** Proceso terminado ***")
+
 def Quitar_cero_func():
     path = input("\nIngrese la ubicación de la carpeta para eliminar CERO: ")
     path = path.replace("\\","/") # Cambiamos los backslashes a slashes
@@ -91,16 +127,18 @@ def Convert_func():
   
     print("\n*** Proceso terminado ***")
     
-  
-x = input("Seleccione una opción:\n 1. Quitar COPIA. \n 2. Quitar CERO. \n 3. Reconvertir archivos.\n")
+x = input("Seleccione una opción:\n 1. Quitar COPIA. \n 2. MODIFICAR palabra \n 3. Quitar CERO. \n 4. Reconvertir archivos.\n\n")
 
 if x == "1":
     Rename_func()
     
 elif x == "2":
-    Quitar_cero_func()
+    Rename_func_perso()
     
 elif x == "3":
+    Quitar_cero_func()
+    
+elif x == "4":
     Convert_func()
     
 else:
